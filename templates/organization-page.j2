@@ -1,0 +1,29 @@
+{% extends "main.j2" %}
+
+{% block title %}
+  Organization Page
+{% endblock %}
+
+{% block header %}
+  <h1>{{ organization['name'] }}</h1>
+  <a class="nav-link" href="{{ url_for('advancedSearch') }}">Return to Search</a>
+  <a class="nav-link" href="{{ url_for('browse') }}">Return to Browse All</a>
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class='browse'>
+    <img src="{{ organization['imgPath'] }}" class="img-thumbnail">
+    <h6>{{ organization['name'] }} | Overview</h6>
+    <p>{{ summary }}</p>
+
+<a href="#Wikipedia page">Link to Original Wikipedia Article</a>
+
+</div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,67 @@
+{% extends "main.j2" %}
+
+{% block title %} Database Connection Test {% endblock %}
+
+{% block body %}
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='img/la.jpg') }}" alt="Los Angeles">
+            </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/chicago.jpg') }}" alt="Chicago">
+            </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/ny.jpg') }}" alt="New York">
+            </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+
+    </div>
+
+
+    <div class="container-fluid">
+        <h1>Browse All Partners</h1>
+    <table>
+    <thead>
+    <tr>
+        <!-- Iterate through each key in the first entry to get the
+        column name -->
+        {% for key in bsg_people[0].keys() %}
+
+        <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
+
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+    <!-- Now, iterate through every person in bsg_people -->
+    {% for person in bsg_people %}
+    <tr>
+        <!-- Then iterate through every key in the current person dictionary -->
+        {% for key in person.keys() %}
+
+        <!-- Create a <td> element with the value of that key in it -->
+        <td>{{person[key]}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
